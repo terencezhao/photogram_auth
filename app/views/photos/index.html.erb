@@ -32,7 +32,7 @@
 
         <p>
           
-          <a href="/delete_like/565" class="btn btn-link">
+          <a href="/delete_like/" class="btn btn-link">
             <i class="fa fa-heart"></i>
           </a>
             carol, alice, and bob
@@ -90,10 +90,10 @@
             <i class="fa fa-chevron-left"></i>
           </a>
           <% if current_user.id == photo.user.id %>
-          <a href="/photos/122/edit" class="btn btn-warning">
+          <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">
             <i class="fa fa-edit"></i>
           </a>
-          <a href="/delete_photo/122" class="btn btn-danger" rel="nofollow">
+          <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">
             <i class="fa fa-trash-o"></i>
           </a>
           <% end %>

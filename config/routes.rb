@@ -23,6 +23,7 @@ Rails.application.routes.draw do
 
   # DELETE
   get "/delete_comment/:id", :controller => "comments", :action => "destroy"
+  get "/delete_like/:id", :controller => "likes", :action => "destroy"
   #------------------------------
 
   # Routes for the Like resource:
