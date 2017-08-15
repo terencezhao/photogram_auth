@@ -1,4 +1,6 @@
 class LikesController < ApplicationController
+  skip_before_filter :verify_authenticity_token, :only => :create
+  
   def index
     @likes = Like.all
 
@@ -26,7 +28,7 @@ class LikesController < ApplicationController
     save_status = @like.save
 
     if save_status == true
-      redirect_to("/likes/#{@like.id}", :notice => "Like created successfully.")
+      redirect_to("/photos", :notice => "Like created successfully.")
     else
       render("likes/new.html.erb")
     end
