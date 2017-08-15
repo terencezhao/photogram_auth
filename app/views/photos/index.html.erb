@@ -31,13 +31,21 @@
         </a>
 
         <p>
-          
-          <a href="/delete_like/" class="btn btn-link">
-            <i class="fa fa-heart"></i>
-          </a>
-            carol, alice, and bob
-            like
-            this
+          <% if photo.likes.empty? %>
+          <form action="/create_like" method="post">
+            <input name="authenticity_token" type="hidden" value="fF1ivIk5HiBfNW/hRWZRHfN21XnpH9p3YN9Lzd9/MTmJAPGb4sdK0NaB0ejd6t5I+TBAloi/WMzfiJSrxdQ/CQ==">
+            <input type="hidden" name="photo_id" value="<%= photo.id %>">
+            <input type="hidden" name="user_id" value="<%= current_user.id %>">
+            <button type="submit" class="btn-link"><i class="fa fa-heart-o"></i></button>
+          </form>
+          <% else %>
+          <form action="/delete_like" method="get">
+            <button type="submit" class="btn-link"><i class="fa fa-heart"></i></button>
+          </form>
+          <% end %>
+          <% photo.likes.each do |like| %>
+          <%= User.find(like.user_id).username %>
+          <% end %>
         </p>
 
         <ul class="media-list">
